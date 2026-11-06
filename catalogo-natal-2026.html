@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVALUY — Catálogo de Natal 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       VARIÁVEIS & RESET
+       ======================================== */
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8D5A3;
+      --gold-dark: #A68B3A;
+      --green: #2D5A3D;
+      --green-light: #4A7C5E;
+      --green-dark: #1B3D28;
+      --wine: #7B2D3A;
+      --wine-light: #A64D5E;
+      --wine-dark: #5C1F2A;
+      --cream: #FAF8F5;
+      --cream-dark: #F0ECE6;
+      --charcoal: #2C2C2C;
+      --charcoal-light: #4A4A4A;
+      --white: #FFFFFF;
+      --shadow-soft: 0 4px 24px rgba(0,0,0,0.06);
+      --shadow-medium: 0 8px 32px rgba(0,0,0,0.08);
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ========================================
+       TIPOGRAFIA
+       ======================================== */
+    .font-display {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .font-display-bold { font-weight: 700; }
+    .font-display-medium { font-weight: 600; }
+    .font-display-light { font-weight: 300; }
+    .font-display-italic { font-style: italic; }
+
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; color: var(--charcoal); }
+    h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.15; }
+    h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.2; }
+    h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.3; }
+    h4 { font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.4; }
+
+    p { font-size: 1rem; color: var(--charcoal-light); }
+
+    .text-gold { color: var(--gold); }
+    .text-green { color: var(--green); }
+    .text-wine { color: var(--wine); }
+    .text-cream { color: var(--cream); }
+
+    /* ========================================
+       LAYOUT - PÁGINAS
+       ======================================== */
+    .page {
+      width: 210mm;
+      min-height: 297mm; /* A4 */
+      background: var(--white);
+      box-shadow: var(--shadow-medium);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-content {
+      padding: 40mm 30mm 35mm;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* ========================================
+       ELEMENTOS DECORATIVOS
+       ======================================== */
+    .ornament {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.15;
+    }
+
+    .ornament--top-left { top: 20mm; left: 15mm; width: 60px; height: 60px; }
+    .ornament--top-right { top: 20mm; right: 15mm; width: 60px; height: 60px; transform: rotate(180deg); }
+    .ornament--bottom-left { bottom: 20mm; left: 15mm; width: 60px; height: 60px; transform: rotate(-90deg); }
+    .ornament--bottom-right { bottom: 20mm; right: 15mm; width: 60px; height: 60px; transform: rotate(90deg); }
+
+    .ornament svg { width: 100%; height: 100%; }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.5rem auto;
+    }
+
+    .divider--short { width: 40px; margin: 1rem auto; }
+
+    .line-gold {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 20%, var(--gold) 50%, transparent 80%);
+      margin: 2rem 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--cream) 100%);
+      border: 1px solid var(--gold);
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+    }
+
+    .badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    /* ========================================
+       BOTÕES / CTAs
+       ======================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 36px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn--primary {
+      background: var(--green);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(45, 90, 61, 0.3);
+    }
+
+    .btn--primary:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(45, 90, 61, 0.4);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--green);
+      border: 2px solid var(--green);
+    }
+
+    .btn--outline:hover {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .btn--whatsapp {
+      background: #25D366;
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn--whatsapp:hover {
+      background: #1EBE5A;
+      transform: translateY(-2px);
+    }
+
+    .btn svg { width: 20px; height: 20px; }
+
+    /* ========================================
+       GALERIA / GRID DE FOTOS
+       ======================================== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 2rem;
+    }
+
+    .gallery--three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: var(--cream-dark);
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-item--featured {
+      grid-column: span 2;
+      aspect-ratio: 2 / 1;
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.3) 100%);
+      opacity: 0;
+      transition: var(--transition);
+      pointer-events: none;
+    }
+
+    .gallery-item:hover::after { opacity: 1; }
+
+    /* ========================================
+       SEÇÕES
+       ======================================== */
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header .badge { margin-bottom: 1rem; }
+
+    .section-title { margin-bottom: 0.75rem; }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--charcoal-light);
+      max-width: 500px;
+      margin: 0 auto;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .category-label {
+      display: inline-block;
+      padding: 6px 16px;
+      background: var(--cream);
+      border: 1px solid var(--gold-light);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 1rem;
+    }
+
+    /* ========================================
+       CUSTOMIZAÇÃO CORPORATIVA - CARDS
+       ======================================== */
+    .custom-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 2rem;
+    }
+
+    .custom-card {
+      padding: 1.75rem;
+      background: var(--cream);
+      border: 1px solid var(--cream-dark);
+      border-radius: 16px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .custom-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--wine), var(--green));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: var(--transition);
+    }
+
+    .custom-card:hover {
+      border-color: var(--gold-light);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .custom-card:hover::before { transform: scaleX(1); }
+
+    .custom-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--gold-light), var(--cream));
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      color: var(--gold-dark);
+    }
+
+    .custom-icon svg { width: 24px; height: 24px; }
+
+    .custom-card h4 { margin-bottom: 0.5rem; color: var(--charcoal); }
+    .custom-card p { font-size: 0.9rem; margin: 0; color: var(--charcoal-light); }
+
+    /* ========================================
+       ITENS DE PERSONALIZAÇÃO
+       ======================================== */
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 1.5rem;
+    }
+
+    .item-tag {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: var(--white);
+      border: 1px solid var(--cream-dark);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      transition: var(--transition);
+    }
+
+    .item-tag:hover {
+      border-color: var(--gold);
+      background: var(--cream);
+      color: var(--gold-dark);
+    }
+
+    .item-tag svg { width: 18px; height: 18px; color: var(--gold); }
+
+    /* ========================================
+       PRAZO / DESTAQUE
+       ======================================== */
+    .deadline-box {
+      position: relative;
+      padding: 2.5rem 2rem;
+      background: linear-gradient(135deg, var(--wine) 0%, var(--wine-dark) 100%);
+      border-radius: 20px;
+      text-align: center;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .deadline-box::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -10%;
+      width: 120%; height: 200%;
+      background: radial-gradient(ellipse, var(--wine-light) 0%, transparent 70%);
+      opacity: 0.15;
+    }
+
+    .deadline-box .badge {
+      background: rgba(255,255,255,0.15);
+      border-color: var(--gold-light);
+      color: var(--gold-light);
+      backdrop-filter: blur(10px);
+    }
+
+    .deadline-box .badge::before { background: var(--gold-light); }
+
+    .deadline-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--gold-light);
+      margin: 1rem 0 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .deadline-text {
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       CONTATO / RODAPÉ
+       ======================================== */
+    .contact-section {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--cream-dark);
+      margin-top: auto;
+    }
+
+    .contact-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
+    .contact-tagline strong { font-weight: 700; color: var(--green); }
+
+    .whatsapp-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--green);
+      transition: var(--transition);
+    }
+
+    .whatsapp-link:hover { color: var(--green-dark); gap: 14px; }
+
+    .whatsapp-link svg { width: 24px; height: 24px; }
+
+    .brand-signature {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--cream-dark);
+      text-align: center;
+    }
+
+    .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      letter-spacing: 0.05em;
+    }
+
+    .brand-tagline {
+      font-size: 0.9rem;
+      color: var(--charcoal-light);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    /* ========================================
+       ANIMAÇÕES
+       ======================================== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .animate-in {
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      opacity: 0;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+
+    /* ========================================
+       PRINT / PDF STYLES
+       ======================================== */
+    @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      body { background: var(--white); }
+      .page { box-shadow: none; page-break-after: always; min-height: 297mm; }
+      .page:last-child { page-break-after: avoid; }
+      .page-content { padding: 30mm 25mm; }
+      .no-print { display: none !important; }
+      .animate-in { animation: none !important; opacity: 1 !important; }
+      .gallery-item:hover { transform: none; box-shadow: var(--shadow-soft); }
+      .gallery-item:hover img { transform: none; }
+      .custom-card:hover { transform: none; box-shadow: var(--shadow-soft); }
+      .btn { pointer-events: none; }
+    }
+
+    @media screen {
+      .screen-only { display: block; }
+      .print-only { display: none; }
+
+      /* Container centralizado para visualização na tela */
+      .catalog-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px 80px;
+        min-height: 100vh;
+      }
+
+      .page { margin-bottom: 30px; max-width: 100%; }
+    }
+
+    /* ========================================
+       RESPONSIVO
+       ======================================== */
+    @media (max-width: 768px) {
+      :root { font-size: 14px; }
+      .page-content { padding: 30mm 20mm 25mm; }
+      .gallery { grid-template-columns: 1fr; }
+      .gallery--three { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item--featured { grid-column: span 1; aspect-ratio: 1 / 1; }
+      .custom-grid { grid-template-columns: 1fr; }
+      .items-grid { grid-template-columns: repeat(2, 1fr); }
+      .deadline-box { padding: 2rem 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .items-grid { grid-template-columns: 1fr; }
+      .gallery--three { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="catalog-wrapper" role="main">
+    <!-- ========================================
+         PÁGINA 1 - APRESENTAÇÃO + CATEGORIAS
+         ======================================== -->
+    <article class="page" aria-label="Página 1 - Apresentação e Categorias">
+      <!-- Ornamentos decorativos -->
+      <div class="ornament ornament--top-left" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 5 L55 25 L30 45 L5 25 Z" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="30" cy="25" r="8" stroke="currentColor" stroke-width="1"/>
+          <path d="M30 33 L30 40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="ornament ornament--top-right" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 5 L55 25 L30 45 L5 25 Z" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="30" cy="25" r="8" stroke="currentColor" stroke-width="1"/>
+          <path d="M30 33 L30 40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="ornament ornament--bottom-left" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 5 L55 25 L30 45 L5 25 Z" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="30" cy="25" r="8" stroke="currentColor" stroke-width="1"/>
+          <path d="M30 33 L30 40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="ornament ornament--bottom-right" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 5 L55 25 L30 45 L5 25 Z" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="30" cy="25" r="8" stroke="currentColor" stroke-width="1"/>
+          <path d="M30 33 L30 40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="page-content">
+        <!-- HEADER / APRESENTAÇÃO NOVALUY -->
+        <header class="animate-in">
+          <div class="section-header">
+            <span class="badge delay-1">Catálogo de Natal 2026</span>
+            <h1 class="font-display-bold delay-2">NOVALUY</h1>
+            <p class="font-display-italic text-gold delay-3" style="font-size: 1.5rem; margin-top: 0.5rem;">
+              Presentes que fortalecem conexões
+            </p>
+          </div>
+
+          <p class="section-subtitle delay-4" style="margin-top: 1rem;">
+            Artesanalidade, cuidado e exclusividade em cada detalhe.
+            Criamos presentes que contam histórias e eternizam relações.
+          </p>
+        </header>
+
+        <!-- CATEGORIA: MIMOS ESPECIAIS -->
+        <section class="animate-in delay-5">
+          <div class="section-header">
+            <span class="category-label">Mimos Especiais</span>
+            <h2 class="section-title font-display-medium">Presentes delicados e sofisticados</h2>
+            <p class="section-subtitle">
+              Ideais para agradecimentos, clientes, colaboradores e parceiros.
+              Pequenos gestos que deixam grandes memórias.
+            </p>
+          </div>
+
+          <div class="gallery gallery--three" role="list" aria-label="Exemplos de Mimos Especiais">
+            <figure class="gallery-item" role="listitem">
+              <img src="assets/WhatsApp Image 2026-10-30 at 15.22.30.jpeg" alt="Mimo especial - exemplo 1" loading="lazy">
+            </figure>
+            <figure class="gallery-item" role="listitem">
+              <img src="assets/WhatsApp Image 2026-10-30 at 15.22.30 (1).jpeg" alt="Mimo especial - exemplo 2" loading="lazy">
+            </figure>
+            <figure class="gallery-item" role="listitem">
+              <img src="assets/WhatsApp Image 2026-10-30 at 15.22.30 (2).jpeg" alt="Mimo especial - exemplo 3" loading="lazy">
+            </figure>
+            <figure class="gallery-item" role="listitem">
+              <img src="assets/WhatsApp Image 2026-10-30 at 15.22.30 (3).jpeg" alt="Mimo especial - exemplo 4" loading="lazy">
+            </figure>
+            <figure class="gallery-item" role="listitem">
+              <img src="assets/WhatsApp Image 2026-10-30 at 15.22.31.jpeg" alt="Mimo especial - exemplo 5" loading="lazy">
+            </figure>
+            <figure class="gallery-item" role="listitem">
+              <img src="assets/WhatsApp Image 2026-10-30 at 15.22.31 (1).jpeg" alt="Mimo especial - exemplo 6" loading="lazy">
+            </figure>
+          </div>
+        </section>
+
+        <div class="line-gold" aria-hidden="true"></div>
+
+        <!-- CATEGORIA: CESTAS & BAÚS -->
+        <section class="animate-in delay-6">
+          <div class="section-header">
+            <span class="category-label">Cestas & Baús</span>
+            <h2 class="section-title font-display-medium">Presentes artesanais elaborados</h2>
+            <p class="section-subtitle">
+              Diferentes tamanhos, composições e acabamentos.
+              Ideais para ocasiões especiais e presentes corporativos de alto impacto.
+            </p>
+          </div>
+
+          <div class="gallery" role="list" aria-label="Exemplos de Cestas e Baús">
+            <figure class="gallery-item gallery-item--featured" role="listitem">
+              <img src="assets/WhatsApp Image 2026-10-30 at 15.22.31 (2).jpeg" alt="Cesta artesanal - exemplo principal" loading="lazy">
+            </figure>
+            <figure class="gallery-item" role="listitem">
+              <img src="assets/WhatsApp Image 2026-10-30 at 15.22.31 (3).jpeg" alt="Baú decorado - exemplo 1" loading="lazy">
+            </figure>
+            <figure class="gallery-item" role="listitem">
+              <img src="assets/WhatsApp Image 2026-10-30 at 15.22.31 (4).jpeg" alt="Cesta composta - exemplo 2" loading="lazy">
+            </figure>
+            <figure class="gallery-item" role="listitem">
+              <img src="assets/WhatsApp Image 2026-10-30 at 15.22.31 (5).jpeg" alt="Baú personalizado - exemplo 3" loading="lazy">
+            </figure>
+          </div>
+
+          <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--charcoal-light); font-style: italic;">
+            As fotografias são referências do nosso trabalho. Cada presente é montado especialmente para cada cliente,
+            sem modelos fixos ou composições padronizadas.
+          </p>
+        </section>
+
+        <!-- FOOTER PÁGINA 1 -->
+        <footer class="brand-signature animate-in" style="animation-delay: 0.7s;">
+          <div class="brand-name">NOVALUY</div>
+          <div class="brand-tagline">Presentes que fortalecem conexões</div>
+        </footer>
+      </div>
+    </article>
+
+    <!-- ========================================
+         PÁGINA 2 - PERSONALIZAÇÃO + CONTATO
+         ======================================== -->
+    <article class="page" aria-label="Página 2 - Personalização Corporativa e Contato">
+      <div class="ornament ornament--top-left" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 5 L55 25 L30 45 L5 25 Z" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="30" cy="25" r="8" stroke="currentColor" stroke-width="1"/>
+          <path d="M30 33 L30 40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="ornament ornament--top-right" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 5 L55 25 L30 45 L5 25 Z" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="30" cy="25" r="8" stroke="currentColor" stroke-width="1"/>
+          <path d="M30 33 L30 40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="ornament ornament--bottom-left" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 5 L55 25 L30 45 L5 25 Z" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="30" cy="25" r="8" stroke="currentColor" stroke-width="1"/>
+          <path d="M30 33 L30 40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="ornament ornament--bottom-right" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 5 L55 25 L30 45 L5 25 Z" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="30" cy="25" r="8" stroke="currentColor" stroke-width="1"/>
+          <path d="M30 33 L30 40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="page-content">
+        <!-- PERSONALIZAÇÃO CORPORATIVA -->
+        <header class="animate-in">
+          <div class="section-header">
+            <span class="badge delay-1">Personalização Corporativa</span>
+            <h1 class="font-display-bold delay-2" style="font-size: clamp(2rem, 4vw, 3rem);">
+              <span class="text-gold">SUA MARCA</span> PRESENTE EM<br>
+              <span class="text-wine">CADA DETALHE</span>
+            </h1>
+            <p class="section-subtitle delay-3" style="margin-top: 1rem;">
+              Oferecemos às empresas a possibilidade de criar presentes exclusivos,
+              totalmente adaptados à identidade e necessidade de cada negócio.
+            </p>
+          </div>
+        </header>
+
+        <!-- GRID DE OPÇÕES DE PERSONALIZAÇÃO -->
+        <section class="animate-in delay-4">
+          <div class="custom-grid" role="list" aria-label="Opções de personalização">
+            <article class="custom-card" role="listitem">
+              <div class="custom-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <h4>Fitas Personalizadas</h4>
+              <p>Nome ou logotipo da empresa impresso em fitas de cetim, gorgurão ou voal.</p>
+            </article>
+
+            <article class="custom-card" role="listitem">
+              <div class="custom-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <h4>Cores de Fitas e Laços</h4>
+              <p>Paleta completa em tons natalinos (dourado, verde, vinho) ou cores institucionais.</p>
+            </article>
+
+            <article class="custom-card" role="listitem">
+              <div class="custom-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                  <polyline points="10 9 9 9 8 9"/>
+                </svg>
+              </div>
+              <h4>Papel de Seda e Acabamentos</h4>
+              <p>Papéis personalizados, tags, selos de lacre e embalagens coordenadas.</p>
+            </article>
+
+            <article class="custom-card" role="listitem">
+              <div class="custom-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </div>
+              <h4>Cartões com Mensagens</h4>
+              <p>Textos exclusivos, identidade visual da empresa e acabamentos premium.</p>
+            </article>
+
+            <article class="custom-card" role="listitem">
+              <div class="custom-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+              <h4>Seleção de Produtos</h4>
+              <p>Curadoria conforme necessidade, perfil do presenteado e orçamento disponível.</p>
+            </article>
+
+            <article class="custom-card" role="listitem">
+              <div class="custom-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <h4>Atendimento Consultivo</h4>
+              <p>A personalização é tratada diretamente com a NOVALUY, mediante consulta.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- EXEMPLOS DE ITENS PERSONALIZÁVEIS -->
+        <section class="animate-in delay-5">
+          <h3 class="font-display-medium" style="text-align: center; margin-bottom: 0.5rem;">Itens que podem ser personalizados</h3>
+          <div class="divider--short" aria-hidden="true"></div>
+
+          <div class="items-grid" role="list" aria-label="Lista de itens personalizáveis">
+            <div class="item-tag" role="listitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Fitas com logo
+            </div>
+            <div class="item-tag" role="listitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Laços especiais
+            </div>
+            <div class="item-tag" role="listitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              </svg>
+              Papel de seda
+            </div>
+            <div class="item-tag" role="listitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+              Cartões mensagem
+            </div>
+            <div class="item-tag" role="listitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+              Cores institucionais
+            </div>
+            <div class="item-tag" role="listitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Tags e selos
+            </div>
+            <div class="item-tag" role="listitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Embalagem coordenada
+            </div>
+            <div class="item-tag" role="listitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Seleção de produtos
+            </div>
+            <div class="item-tag" role="listitem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Acompanhamento dedicado
+            </div>
+          </div>
+        </section>
+
+        <!-- PRAZO DE ENCOMENDA -->
+        <section class="animate-in delay-6">
+          <div class="deadline-box" role="region" aria-label="Prazo para encomendas de Natal">
+            <span class="badge">Prazo de Encomenda</span>
+            <div class="deadline-date">10 de novembro de 2026</div>
+            <p class="deadline-text">
+              Prazo final para solicitar fitas personalizadas para o Natal.
+              Recomendamos antecipar seu pedido para garantir disponibilidade.
+            </p>
+          </div>
+        </section>
+
+        <!-- CONTATO / CTA FINAL -->
+        <footer class="contact-section animate-in" style="animation-delay: 0.7s;">
+          <p class="contact-tagline">
+            Surpreenda seus <strong>clientes</strong>, <strong>colaboradores</strong> e <strong>parceiros</strong>
+            com presentes feitos especialmente para eles.
+          </p>
+
+          <p class="contact-tagline" style="font-size: 1.1rem; margin-bottom: 2rem; font-style: normal; color: var(--charcoal-light);">
+            Entre em contato e solicite uma proposta personalizada.
+          </p>
+
+          <!-- ⚠️ SUBSTITUA PELO SEU NÚMERO REAL -->
+          <a href="https://wa.me/55SEUNUMEROAQUI" class="btn btn--whatsapp no-print" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.011L.216 21.738l2.426-.66c1.51.878 3.256 1.338 5.048 1.338 5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-2.485 0-4.744-.812-6.474-2.087L.242 20.02l2.165-5.487C1.126 13.118.23 10.688.23 8c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/>
+            </svg>
+            Falar no WhatsApp
+          </a>
+
+          <!-- Versão para impressão -->
+          <div class="print-only" style="margin-top: 1.5rem; padding: 1.5rem; background: var(--cream); border-radius: 12px; border: 1px solid var(--cream-dark);">
+            <p style="font-weight: 600; color: var(--charcoal); margin-bottom: 0.5rem;">Para orçamentos e personalizações:</p>
+            <p style="font-size: 1.25rem; font-weight: 600; color: var(--green); font-family: 'Cormorant Garamond', serif;">
+              WhatsApp: <span class="print-phone">(XX) XXXXX-XXXX</span>
+            </p>
+            <p style="font-size: 0.85rem; color: var(--charcoal-light); margin-top: 0.75rem;">
+              Atendimento consultivo • Personalização sob medida • Entrega para todo Brasil
+            </p>
+          </div>
+
+          <div class="brand-signature" style="margin-top: 2rem; padding-top: 1.5rem;">
+            <div class="brand-name">NOVALUY</div>
+            <div class="brand-tagline">Presentes que fortalecem conexões</div>
+          </div>
+        </footer>
+      </div>
+    </article>
+  </div>
+
+  <!-- ========================================
+       JAVASCRIPT - INTERAÇÕES LEVES
+       ======================================== -->
+  <script>
+    // Animação de entrada escalonada ao scroll (apenas screen)
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.animate-in').forEach(el => {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
+      });
+    }
+
+    // Smooth scroll para âncoras (se houver)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Preload das imagens da galeria para transições suaves
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      if (img.complete) return;
+      img.style.opacity = '0';
+      img.addEventListener('load', () => {
+        img.style.transition = 'opacity 0.4s ease';
+        img.style.opacity = '1';
+      });
+    });
+
+    // Atualizar ano no título se necessário
+    document.title = 'NOVALUY — Catálogo de Natal 2026';
+  </script>
+</body>
+</html>
